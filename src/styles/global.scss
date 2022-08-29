@@ -1,9 +1,62 @@
-$redColor: rgb(255, 106, 106);
-
-html {
-    font-family: robotoReg;
+.wrapper {
+    margin: 0 auto;
+    width: 1000px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
 }
-
-h1 {
-    color: $redColor;
+.upperText {
+    font-size: 30px;
+    text-align: center;
+    padding: 5px;
+}
+.textArea {
+    height: 200px;
+    width: 98%;
+    font-size: 20px;
+    border: 2px solid black;
+    border-radius: 3px;
+    padding: 10px;
+}
+.keyboard {
+    height: 350px;
+    width: 98%;
+    font-size: 20px;
+    border: 3px solid black;
+    border-radius: 10px;
+    background-color: rgb(154, 154, 154);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+}
+.row {
+    height: 18%;
+    width: 98%;
+    background-color: rgb(176, 176, 176);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.buttomText {
+    font-size: 22px;
+    text-align: center;
+    padding: 5px;
+}
+.key {
+    height: 90%;
+    width: 55px;
+    border: 1px solid black;
+    background-color: rgb(83, 83, 83);
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:hover {
+        background-color: rgb(148, 244, 154);
+    }
 }
