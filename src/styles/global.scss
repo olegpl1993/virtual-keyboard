@@ -63,14 +63,38 @@
 .fkey {
     background-color: rgb(110, 110, 110);
 }
-.backspace {
+.Backspace {
+    width: 145px;
+}
+.Tab {
+    width: 70px;
+}
+.Delete {
+    width: 70px;
+}
+.CapsLock {
     width: 140px;
+}
+.Enter {
+    width: 120px;
+}
+.ShiftLeft {
+    width: 140px;
+}
+.ShiftRight {
+    width: 120px;
+}
+.Space {
+    width: 440px;
+}
+.ControlRight {
+    width: 60px;
 }
 
 .over {
     background-color: rgb(187, 253, 192);
 }
 .active {
-    border-radius: 10px;
+    border-radius: 15px;
     background-color: rgb(196, 255, 107);
 }
