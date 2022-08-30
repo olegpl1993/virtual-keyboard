@@ -37,10 +37,11 @@
 .row {
     height: 18%;
     width: 98%;
-    background-color: rgb(176, 176, 176);
+    background-color: rgb(215, 215, 215);
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 5px;
 }
 .buttomText {
     font-size: 22px;
@@ -51,12 +52,25 @@
     height: 90%;
     width: 55px;
     border: 1px solid black;
-    background-color: rgb(83, 83, 83);
+    background-color: rgb(170, 170, 170);
     border-radius: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
-    &:hover {
-        background-color: rgb(148, 244, 154);
-    }
+    user-select: none;
+    font-size: 26px;
+}
+.fkey {
+    background-color: rgb(110, 110, 110);
+}
+.backspace {
+    width: 140px;
+}
+
+.over {
+    background-color: rgb(187, 253, 192);
+}
+.active {
+    border-radius: 10px;
+    background-color: rgb(196, 255, 107);
 }
