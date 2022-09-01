@@ -45,55 +45,6 @@ row5.classList.add('row');
 keyboard.appendChild(row5);
 // ------------------------------------------------------------------------------------
 
-// функции клавиатуры -----------------------------------------------------------------
-function mouseupBTN() { // отпустил ЛКМ
-  const allKey = document.querySelectorAll('.key');
-  allKey.forEach((el) => {
-    el.classList.remove('active');
-  });
-}
-function mousedownBTN(e) { // нажал ЛКМ
-  if (e.target.classList.contains('key')) { // нажатие на клавишу
-    e.target.classList.add('active');
-  }
-  if (e.target.classList.contains('akey')) { // нажатие на текстовую клавишу
-    textArea.value += e.target.textContent;
-  }
-}
-function mouseoutBTN() { // убрал курсор
-  const allKey = document.querySelectorAll('.key');
-  allKey.forEach((el) => {
-    el.classList.remove('over');
-  });
-}
-function mouseoverBTN(e) { // навел курсор
-  if (e.target.classList.contains('key')) {
-    e.target.classList.add('over');
-  }
-}
-function keydown(e) { // нажатие клавишы клавиатуры
-  console.log(e.code);
-  const currentKey = document.querySelector(`.${e.code}`); // определяет нажатую клавишу
-  currentKey.classList.add('active');
-  console.log(currentKey);
-  if (currentKey.classList.contains('akey')) { // если нажатая кнопка текстовая
-    e.preventDefault();
-    textArea.value += currentKey.textContent;
-  }
-}
-function keyup(e) { // отпустил клавишу клавиатуры
-  const currentKey = document.querySelector(`.${e.code}`); // определяет отпущеную клавишу
-  currentKey.classList.remove('active');
-}
-
-keyboard.addEventListener('mousedown', (e) => mousedownBTN(e));
-keyboard.addEventListener('mouseup', () => mouseupBTN());
-keyboard.addEventListener('mouseover', (e) => mouseoverBTN(e));
-keyboard.addEventListener('mouseout', () => mouseoutBTN());
-document.addEventListener('keydown', (e) => keydown(e));
-document.addEventListener('keyup', (e) => keyup(e));
-//-------------------------------------------------------------------------------------
-
 // кнопки клавиатуры (первая строка)----------------------------------------------------
 const backquote = document.createElement('div');
 backquote.classList.add('key');
@@ -550,3 +501,259 @@ controlRight.classList.add('fkey');
 controlRight.classList.add('ControlRight');
 controlRight.textContent = 'Ctrl';
 row5.appendChild(controlRight);
+//-------------------------------------------------------------------------------------
+
+// вспомогательные функции -------------------------------------------------------------
+function getCaret(el) { // определяет положение каретки
+  if (el.selectionStart) {
+    return el.selectionStart;
+  } if (document.selection) {
+    el.focus();
+    const r = document.selection.createRange();
+    if (r == null) {
+      return 0;
+    }
+    const re = el.createTextRange();
+    const rc = re.duplicate();
+    re.moveToBookmark(r.getBookmark());
+    rc.setEndPoint('EndToStart', re);
+    return rc.text.length;
+  }
+  return 0;
+}
+let car = getCaret(textArea);
+
+function lowerCase() {
+  backquote.textContent = '`';
+  digit1.textContent = '1';
+  digit2.textContent = '2';
+  digit3.textContent = '3';
+  digit4.textContent = '4';
+  digit5.textContent = '5';
+  digit6.textContent = '6';
+  digit7.textContent = '7';
+  digit8.textContent = '8';
+  digit9.textContent = '9';
+  digit0.textContent = '0';
+  minus.textContent = '-';
+  equal.textContent = '=';
+  keyQ.textContent = 'q';
+  keyW.textContent = 'w';
+  keyE.textContent = 'e';
+  keyR.textContent = 'r';
+  keyT.textContent = 't';
+  keyY.textContent = 'y';
+  keyU.textContent = 'u';
+  keyI.textContent = 'i';
+  keyO.textContent = 'o';
+  keyP.textContent = 'p';
+  bracketLeft.textContent = '[';
+  bracketRight.textContent = ']';
+  backslash.textContent = '\\';
+  keyA.textContent = 'a';
+  keyS.textContent = 's';
+  keyD.textContent = 'd';
+  keyF.textContent = 'f';
+  keyG.textContent = 'g';
+  keyH.textContent = 'h';
+  keyJ.textContent = 'j';
+  keyK.textContent = 'k';
+  keyL.textContent = 'l';
+  semicolon.textContent = ';';
+  quote.textContent = '\'';
+  keyZ.textContent = 'z';
+  keyX.textContent = 'x';
+  keyC.textContent = 'c';
+  keyV.textContent = 'v';
+  keyB.textContent = 'b';
+  keyN.textContent = 'n';
+  keyM.textContent = 'm';
+  comma.textContent = ',';
+  period.textContent = '.';
+  slash.textContent = '/';
+}
+function upperCase() {
+  backquote.textContent = '~';
+  digit1.textContent = '!';
+  digit2.textContent = '@';
+  digit3.textContent = '#';
+  digit4.textContent = '$';
+  digit5.textContent = '%';
+  digit6.textContent = '^';
+  digit7.textContent = '&';
+  digit8.textContent = '*';
+  digit9.textContent = '(';
+  digit0.textContent = ')';
+  minus.textContent = '_';
+  equal.textContent = '+';
+  keyQ.textContent = 'Q';
+  keyW.textContent = 'W';
+  keyE.textContent = 'E';
+  keyR.textContent = 'R';
+  keyT.textContent = 'T';
+  keyY.textContent = 'Y';
+  keyU.textContent = 'U';
+  keyI.textContent = 'I';
+  keyO.textContent = 'O';
+  keyP.textContent = 'P';
+  bracketLeft.textContent = '{';
+  bracketRight.textContent = '}';
+  backslash.textContent = '|';
+  keyA.textContent = 'A';
+  keyS.textContent = 'S';
+  keyD.textContent = 'D';
+  keyF.textContent = 'F';
+  keyG.textContent = 'G';
+  keyH.textContent = 'H';
+  keyJ.textContent = 'J';
+  keyK.textContent = 'K';
+  keyL.textContent = 'L';
+  semicolon.textContent = ':';
+  quote.textContent = '"';
+  keyZ.textContent = 'Z';
+  keyX.textContent = 'X';
+  keyC.textContent = 'C';
+  keyV.textContent = 'V';
+  keyB.textContent = 'B';
+  keyN.textContent = 'N';
+  keyM.textContent = 'M';
+  comma.textContent = '<';
+  period.textContent = '>';
+  slash.textContent = '?';
+}
+let textCase = 'lowerCase';
+//-------------------------------------------------------------------------------------
+
+// функциональные кнопки---------------------------------------------------------------
+function clickBackspace() {
+  car = getCaret(textArea); // определяет текущее положение каретки
+  const arr = textArea.value.split(''); // получает строку из текстового поля, преобразует массив
+  arr.splice(car - 1, 1); // добавляет/убирает элемент в массиве
+  const str = arr.join(''); // делает строку из массива
+  textArea.value = str; // приваивает новую строку в текстовое поле
+  textArea.setSelectionRange(car - 1, car - 1); // устанавливает каретку на новую позицию
+}
+function clickDelete() {
+  car = getCaret(textArea);
+  const arr = textArea.value.split('');
+  arr.splice(car, 1);
+  const str = arr.join('');
+  textArea.value = str;
+  textArea.setSelectionRange(car, car);
+}
+function clickTab() {
+  car = getCaret(textArea);
+  const arr = textArea.value.split('');
+  arr.splice(car, 0, '    ');
+  const str = arr.join('');
+  textArea.value = str;
+  textArea.setSelectionRange(car + 4, car + 4);
+}
+function clickEnter() {
+  car = getCaret(textArea);
+  const arr = textArea.value.split('');
+  arr.splice(car, 0, '\n');
+  const str = arr.join('');
+  textArea.value = str;
+  textArea.setSelectionRange(car + 1, car + 1);
+}
+function clickShift() {
+  upperCase();
+  textCase = 'upperCase';
+  console.log(textCase);
+}
+function unClickShift() {
+  lowerCase();
+  textCase = 'lowerCase';
+  console.log(textCase);
+}
+//-------------------------------------------------------------------------------------
+
+// функции клавиатуры -----------------------------------------------------------------
+
+function mouseupBTN(e) { // отпустил ЛКМ
+  const allKey = document.querySelectorAll('.key');
+  allKey.forEach((el) => {
+    el.classList.remove('active');
+  });
+  if (e.target.classList.contains('ShiftRight') || e.target.classList.contains('ShiftLeft')) unClickShift();
+}
+
+function mousedownBTN(e) { // нажал ЛКМ
+  if (e.target.classList.contains('key')) { // нажатие на клавишу
+    e.target.classList.add('active');
+  }
+  if (e.target.classList.contains('akey')) { // нажатие на текстовую клавишу
+    car = getCaret(textArea);
+    textArea.focus();
+    textArea.setSelectionRange(car, car);
+    const arr = textArea.value.split('');
+    arr.splice(car, 0, e.target.textContent);
+    const str = arr.join('');
+    textArea.value = str;
+    textArea.setSelectionRange(car + 1, car + 1);
+  }
+  if (e.target.classList.contains('fkey')) { // нажатие на функциональную клавишу
+    car = getCaret(textArea);
+    textArea.focus();
+    textArea.setSelectionRange(car, car);
+    if (e.target.classList.contains('Backspace')) clickBackspace();
+    if (e.target.classList.contains('Delete')) clickDelete();
+    if (e.target.classList.contains('Tab')) clickTab();
+    if (e.target.classList.contains('Enter')) clickEnter();
+    if (e.target.classList.contains('ShiftRight') || e.target.classList.contains('ShiftLeft')) clickShift();
+  }
+}
+
+function mouseoutBTN() { // убрал курсор
+  const allKey = document.querySelectorAll('.key');
+  allKey.forEach((el) => {
+    el.classList.remove('over');
+  });
+}
+
+function mouseoverBTN(e) { // навел курсор
+  if (e.target.classList.contains('key')) {
+    e.target.classList.add('over');
+  }
+}
+
+function keydown(e) { // нажатие клавишы клавиатуры
+  textArea.focus(); // устанавливает каретку на текстовое поле
+  car = getCaret(textArea);
+  const currentKey = document.querySelector(`.${e.code}`); // определяет нажатую клавишу
+  currentKey.classList.add('active');
+  console.log(currentKey);
+  if (currentKey.classList.contains('akey')) { // если нажатая кнопка текстовая
+    e.preventDefault(); // отменяет стандартный ивент
+    car = getCaret(textArea);
+    const arr = textArea.value.split('');
+    arr.splice(car, 0, currentKey.textContent);
+    const str = arr.join('');
+    textArea.value = str;
+    textArea.setSelectionRange(car + 1, car + 1);
+  }
+  if (currentKey.classList.contains('fkey')) { // если нажатая кнопка функциональная
+    e.preventDefault();
+    if (currentKey.classList.contains('Backspace')) clickBackspace();
+    if (currentKey.classList.contains('Delete')) clickDelete();
+    if (currentKey.classList.contains('Tab')) clickTab();
+    if (currentKey.classList.contains('Enter')) clickEnter();
+    if (currentKey.classList.contains('ShiftRight') || currentKey.classList.contains('ShiftLeft')) clickShift();
+    // if (currentKey.classList.contains('CapsLock')) clickCapsLock();   --доделать--
+  }
+}
+
+function keyup(e) { // отпустил клавишу клавиатуры
+  const currentKey = document.querySelector(`.${e.code}`); // определяет отпущеную клавишу
+  currentKey.classList.remove('active');
+  if (currentKey.classList.contains('ShiftRight') || currentKey.classList.contains('ShiftLeft')) unClickShift();
+}
+
+keyboard.addEventListener('mousedown', (e) => mousedownBTN(e));
+keyboard.addEventListener('mouseup', (e) => mouseupBTN(e));
+keyboard.addEventListener('mouseover', (e) => mouseoverBTN(e));
+keyboard.addEventListener('mouseout', () => mouseoutBTN());
+document.addEventListener('keydown', (e) => keydown(e));
+document.addEventListener('keyup', (e) => keyup(e));
+//-------------------------------------------------------------------------------------
