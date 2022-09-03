@@ -21,7 +21,7 @@ wrapper.appendChild(keyboard);
 
 const buttomText = document.createElement('div');
 buttomText.classList.add('buttomText');
-buttomText.innerHTML = '<p>Клавиатура создана в операционной системе Windows</p><p>Для переключения языка комбинация: левыe ctrl + alt</p>';
+buttomText.innerHTML = '<p>Клавиатура создана в операционной системе Windows</p><p>Для переключения языка комбинация: ctrl + alt</p>';
 wrapper.appendChild(buttomText);
 
 const row1 = document.createElement('div');
@@ -523,105 +523,221 @@ function getCaret(el) { // определяет положение каретк�
 }
 let car = getCaret(textArea);
 
+let lang = 'en';
 function lowerCase() {
-  backquote.textContent = '`';
-  digit1.textContent = '1';
-  digit2.textContent = '2';
-  digit3.textContent = '3';
-  digit4.textContent = '4';
-  digit5.textContent = '5';
-  digit6.textContent = '6';
-  digit7.textContent = '7';
-  digit8.textContent = '8';
-  digit9.textContent = '9';
-  digit0.textContent = '0';
-  minus.textContent = '-';
-  equal.textContent = '=';
-  keyQ.textContent = 'q';
-  keyW.textContent = 'w';
-  keyE.textContent = 'e';
-  keyR.textContent = 'r';
-  keyT.textContent = 't';
-  keyY.textContent = 'y';
-  keyU.textContent = 'u';
-  keyI.textContent = 'i';
-  keyO.textContent = 'o';
-  keyP.textContent = 'p';
-  bracketLeft.textContent = '[';
-  bracketRight.textContent = ']';
-  backslash.textContent = '\\';
-  keyA.textContent = 'a';
-  keyS.textContent = 's';
-  keyD.textContent = 'd';
-  keyF.textContent = 'f';
-  keyG.textContent = 'g';
-  keyH.textContent = 'h';
-  keyJ.textContent = 'j';
-  keyK.textContent = 'k';
-  keyL.textContent = 'l';
-  semicolon.textContent = ';';
-  quote.textContent = '\'';
-  keyZ.textContent = 'z';
-  keyX.textContent = 'x';
-  keyC.textContent = 'c';
-  keyV.textContent = 'v';
-  keyB.textContent = 'b';
-  keyN.textContent = 'n';
-  keyM.textContent = 'm';
-  comma.textContent = ',';
-  period.textContent = '.';
-  slash.textContent = '/';
+  if (lang === 'en') {
+    backquote.textContent = '`';
+    digit1.textContent = '1';
+    digit2.textContent = '2';
+    digit3.textContent = '3';
+    digit4.textContent = '4';
+    digit5.textContent = '5';
+    digit6.textContent = '6';
+    digit7.textContent = '7';
+    digit8.textContent = '8';
+    digit9.textContent = '9';
+    digit0.textContent = '0';
+    minus.textContent = '-';
+    equal.textContent = '=';
+    keyQ.textContent = 'q';
+    keyW.textContent = 'w';
+    keyE.textContent = 'e';
+    keyR.textContent = 'r';
+    keyT.textContent = 't';
+    keyY.textContent = 'y';
+    keyU.textContent = 'u';
+    keyI.textContent = 'i';
+    keyO.textContent = 'o';
+    keyP.textContent = 'p';
+    bracketLeft.textContent = '[';
+    bracketRight.textContent = ']';
+    backslash.textContent = '\\';
+    keyA.textContent = 'a';
+    keyS.textContent = 's';
+    keyD.textContent = 'd';
+    keyF.textContent = 'f';
+    keyG.textContent = 'g';
+    keyH.textContent = 'h';
+    keyJ.textContent = 'j';
+    keyK.textContent = 'k';
+    keyL.textContent = 'l';
+    semicolon.textContent = ';';
+    quote.textContent = '\'';
+    keyZ.textContent = 'z';
+    keyX.textContent = 'x';
+    keyC.textContent = 'c';
+    keyV.textContent = 'v';
+    keyB.textContent = 'b';
+    keyN.textContent = 'n';
+    keyM.textContent = 'm';
+    comma.textContent = ',';
+    period.textContent = '.';
+    slash.textContent = '/';
+  } else {
+    backquote.textContent = 'ё';
+    digit1.textContent = '1';
+    digit2.textContent = '2';
+    digit3.textContent = '3';
+    digit4.textContent = '4';
+    digit5.textContent = '5';
+    digit6.textContent = '6';
+    digit7.textContent = '7';
+    digit8.textContent = '8';
+    digit9.textContent = '9';
+    digit0.textContent = '0';
+    minus.textContent = '-';
+    equal.textContent = '=';
+    keyQ.textContent = 'й';
+    keyW.textContent = 'ц';
+    keyE.textContent = 'у';
+    keyR.textContent = 'к';
+    keyT.textContent = 'е';
+    keyY.textContent = 'н';
+    keyU.textContent = 'г';
+    keyI.textContent = 'ш';
+    keyO.textContent = 'щ';
+    keyP.textContent = 'з';
+    bracketLeft.textContent = 'х';
+    bracketRight.textContent = 'ъ';
+    backslash.textContent = '\\';
+    keyA.textContent = 'ф';
+    keyS.textContent = 'ы';
+    keyD.textContent = 'в';
+    keyF.textContent = 'а';
+    keyG.textContent = 'п';
+    keyH.textContent = 'р';
+    keyJ.textContent = 'о';
+    keyK.textContent = 'л';
+    keyL.textContent = 'д';
+    semicolon.textContent = 'ж';
+    quote.textContent = 'э';
+    keyZ.textContent = 'я';
+    keyX.textContent = 'ч';
+    keyC.textContent = 'с';
+    keyV.textContent = 'м';
+    keyB.textContent = 'и';
+    keyN.textContent = 'т';
+    keyM.textContent = 'ь';
+    comma.textContent = 'б';
+    period.textContent = 'ю';
+    slash.textContent = '.';
+  }
 }
+
 function upperCase() {
-  backquote.textContent = '~';
-  digit1.textContent = '!';
-  digit2.textContent = '@';
-  digit3.textContent = '#';
-  digit4.textContent = '$';
-  digit5.textContent = '%';
-  digit6.textContent = '^';
-  digit7.textContent = '&';
-  digit8.textContent = '*';
-  digit9.textContent = '(';
-  digit0.textContent = ')';
-  minus.textContent = '_';
-  equal.textContent = '+';
-  keyQ.textContent = 'Q';
-  keyW.textContent = 'W';
-  keyE.textContent = 'E';
-  keyR.textContent = 'R';
-  keyT.textContent = 'T';
-  keyY.textContent = 'Y';
-  keyU.textContent = 'U';
-  keyI.textContent = 'I';
-  keyO.textContent = 'O';
-  keyP.textContent = 'P';
-  bracketLeft.textContent = '{';
-  bracketRight.textContent = '}';
-  backslash.textContent = '|';
-  keyA.textContent = 'A';
-  keyS.textContent = 'S';
-  keyD.textContent = 'D';
-  keyF.textContent = 'F';
-  keyG.textContent = 'G';
-  keyH.textContent = 'H';
-  keyJ.textContent = 'J';
-  keyK.textContent = 'K';
-  keyL.textContent = 'L';
-  semicolon.textContent = ':';
-  quote.textContent = '"';
-  keyZ.textContent = 'Z';
-  keyX.textContent = 'X';
-  keyC.textContent = 'C';
-  keyV.textContent = 'V';
-  keyB.textContent = 'B';
-  keyN.textContent = 'N';
-  keyM.textContent = 'M';
-  comma.textContent = '<';
-  period.textContent = '>';
-  slash.textContent = '?';
+  if (lang === 'en') {
+    backquote.textContent = '~';
+    digit1.textContent = '!';
+    digit2.textContent = '@';
+    digit3.textContent = '#';
+    digit4.textContent = '$';
+    digit5.textContent = '%';
+    digit6.textContent = '^';
+    digit7.textContent = '&';
+    digit8.textContent = '*';
+    digit9.textContent = '(';
+    digit0.textContent = ')';
+    minus.textContent = '_';
+    equal.textContent = '+';
+    keyQ.textContent = 'Q';
+    keyW.textContent = 'W';
+    keyE.textContent = 'E';
+    keyR.textContent = 'R';
+    keyT.textContent = 'T';
+    keyY.textContent = 'Y';
+    keyU.textContent = 'U';
+    keyI.textContent = 'I';
+    keyO.textContent = 'O';
+    keyP.textContent = 'P';
+    bracketLeft.textContent = '{';
+    bracketRight.textContent = '}';
+    backslash.textContent = '|';
+    keyA.textContent = 'A';
+    keyS.textContent = 'S';
+    keyD.textContent = 'D';
+    keyF.textContent = 'F';
+    keyG.textContent = 'G';
+    keyH.textContent = 'H';
+    keyJ.textContent = 'J';
+    keyK.textContent = 'K';
+    keyL.textContent = 'L';
+    semicolon.textContent = ':';
+    quote.textContent = '"';
+    keyZ.textContent = 'Z';
+    keyX.textContent = 'X';
+    keyC.textContent = 'C';
+    keyV.textContent = 'V';
+    keyB.textContent = 'B';
+    keyN.textContent = 'N';
+    keyM.textContent = 'M';
+    comma.textContent = '<';
+    period.textContent = '>';
+    slash.textContent = '?';
+  } else {
+    backquote.textContent = 'Ё';
+    digit1.textContent = '!';
+    digit2.textContent = '@';
+    digit3.textContent = '#';
+    digit4.textContent = '$';
+    digit5.textContent = '%';
+    digit6.textContent = '^';
+    digit7.textContent = '&';
+    digit8.textContent = '*';
+    digit9.textContent = '(';
+    digit0.textContent = ')';
+    minus.textContent = '_';
+    equal.textContent = '+';
+    keyQ.textContent = 'Й';
+    keyW.textContent = 'Ц';
+    keyE.textContent = 'У';
+    keyR.textContent = 'К';
+    keyT.textContent = 'Е';
+    keyY.textContent = 'Н';
+    keyU.textContent = 'Г';
+    keyI.textContent = 'Ш';
+    keyO.textContent = 'Щ';
+    keyP.textContent = 'З';
+    bracketLeft.textContent = 'Х';
+    bracketRight.textContent = 'Ъ';
+    backslash.textContent = '|';
+    keyA.textContent = 'Ф';
+    keyS.textContent = 'Ы';
+    keyD.textContent = 'В';
+    keyF.textContent = 'А';
+    keyG.textContent = 'П';
+    keyH.textContent = 'Р';
+    keyJ.textContent = 'О';
+    keyK.textContent = 'Л';
+    keyL.textContent = 'Д';
+    semicolon.textContent = 'Ж';
+    quote.textContent = 'Э';
+    keyZ.textContent = 'Я';
+    keyX.textContent = 'Ч';
+    keyC.textContent = 'С';
+    keyV.textContent = 'М';
+    keyB.textContent = 'И';
+    keyN.textContent = 'Т';
+    keyM.textContent = 'Ь';
+    comma.textContent = 'Б';
+    period.textContent = 'Ю';
+    slash.textContent = ',';
+  }
 }
-let textCase = 'lowerCase';
+//-------------------------------------------------------------------------------------
+
+// сохранение в local storage ----------------------------------------------------------
+function setLocalStorage() {
+  localStorage.setItem('keyboardLang', lang);// сохранение языка в local storage
+}
+function getLocalStorage() {
+  if (localStorage.getItem('keyboardLang')) { // проверяет наличие сохраненния
+    lang = localStorage.getItem('keyboardLang'); // устанавливает язык
+    lowerCase();
+  }
+}
+window.addEventListener('beforeunload', setLocalStorage); // сохранение в local storage перед закрытием страницы
+window.addEventListener('load', getLocalStorage); // загрузка из local storage при обновлении страницы
+
 //-------------------------------------------------------------------------------------
 
 // функциональные кнопки---------------------------------------------------------------
@@ -633,6 +749,7 @@ function clickBackspace() {
   textArea.value = str; // приваивает новую строку в текстовое поле
   textArea.setSelectionRange(car - 1, car - 1); // устанавливает каретку на новую позицию
 }
+
 function clickDelete() {
   car = getCaret(textArea);
   const arr = textArea.value.split('');
@@ -641,6 +758,7 @@ function clickDelete() {
   textArea.value = str;
   textArea.setSelectionRange(car, car);
 }
+
 function clickTab() {
   car = getCaret(textArea);
   const arr = textArea.value.split('');
@@ -649,6 +767,7 @@ function clickTab() {
   textArea.value = str;
   textArea.setSelectionRange(car + 4, car + 4);
 }
+
 function clickEnter() {
   car = getCaret(textArea);
   const arr = textArea.value.split('');
@@ -657,20 +776,54 @@ function clickEnter() {
   textArea.value = str;
   textArea.setSelectionRange(car + 1, car + 1);
 }
+
+let caps = false;
 function clickShift() {
-  upperCase();
-  textCase = 'upperCase';
-  console.log(textCase);
+  if (caps === false) {
+    upperCase();
+  } else {
+    lowerCase();
+  }
 }
+
 function unClickShift() {
-  lowerCase();
-  textCase = 'lowerCase';
-  console.log(textCase);
+  if (caps === false) {
+    lowerCase();
+  } else {
+    upperCase();
+  }
+}
+
+function clickCapsLock() {
+  if (caps === false) {
+    caps = true;
+    capsLock.classList.add('activeCaps');
+    upperCase();
+  } else {
+    caps = false;
+    capsLock.classList.remove('activeCaps');
+    lowerCase();
+  }
+}
+
+function changeLang() { // измение языка ( ctrl + alt )
+  if (lang === 'en' && caps === false) {
+    lang = 'ru';
+    lowerCase();
+  } else if (lang === 'en' && caps === true) {
+    lang = 'ru';
+    upperCase();
+  } else if (lang === 'ru' && caps === false) {
+    lang = 'en';
+    lowerCase();
+  } else if (lang === 'ru' && caps === true) {
+    lang = 'en';
+    upperCase();
+  }
 }
 //-------------------------------------------------------------------------------------
 
 // функции клавиатуры -----------------------------------------------------------------
-
 function mouseupBTN(e) { // отпустил ЛКМ
   const allKey = document.querySelectorAll('.key');
   allKey.forEach((el) => {
@@ -702,6 +855,7 @@ function mousedownBTN(e) { // нажал ЛКМ
     if (e.target.classList.contains('Tab')) clickTab();
     if (e.target.classList.contains('Enter')) clickEnter();
     if (e.target.classList.contains('ShiftRight') || e.target.classList.contains('ShiftLeft')) clickShift();
+    if (e.target.classList.contains('CapsLock')) clickCapsLock();
   }
 }
 
@@ -723,7 +877,6 @@ function keydown(e) { // нажатие клавишы клавиатуры
   car = getCaret(textArea);
   const currentKey = document.querySelector(`.${e.code}`); // определяет нажатую клавишу
   currentKey.classList.add('active');
-  console.log(currentKey);
   if (currentKey.classList.contains('akey')) { // если нажатая кнопка текстовая
     e.preventDefault(); // отменяет стандартный ивент
     car = getCaret(textArea);
@@ -740,7 +893,9 @@ function keydown(e) { // нажатие клавишы клавиатуры
     if (currentKey.classList.contains('Tab')) clickTab();
     if (currentKey.classList.contains('Enter')) clickEnter();
     if (currentKey.classList.contains('ShiftRight') || currentKey.classList.contains('ShiftLeft')) clickShift();
-    // if (currentKey.classList.contains('CapsLock')) clickCapsLock();   --доделать--
+    if (currentKey.classList.contains('CapsLock')) clickCapsLock();
+    if (controlLeft.classList.contains('active') && altLeft.classList.contains('active')) changeLang();
+    if (controlRight.classList.contains('active') && altRight.classList.contains('active')) changeLang();
   }
 }
 
