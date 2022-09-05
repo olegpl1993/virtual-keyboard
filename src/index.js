@@ -504,7 +504,7 @@ row5.appendChild(controlRight);
 //-------------------------------------------------------------------------------------
 
 // вспомогательные функции -------------------------------------------------------------
-function getCaret(el) { // определяет положение каретки
+function getCaret(el) { // определяет положение каретки в текстовом поле
   if (el.selectionStart) {
     return el.selectionStart;
   } if (document.selection) {
@@ -522,6 +522,12 @@ function getCaret(el) { // определяет положение каретк�
   return 0;
 }
 let car = getCaret(textArea);
+
+function getPosInRow(el) { // определеяет положение каретки в текущей строке
+  const caret = getCaret(el);
+  const text = el.value.substr(0, caret).replace(/^(.*[\n\r])*([^\n\r]*)$/, '$2');
+  return text.length;
+}
 
 let lang = 'en';
 function lowerCase() {
@@ -743,11 +749,13 @@ window.addEventListener('load', getLocalStorage); // загрузка из local
 // функциональные кнопки---------------------------------------------------------------
 function clickBackspace() {
   car = getCaret(textArea); // определяет текущее положение каретки
-  const arr = textArea.value.split(''); // получает строку из текстового поля, преобразует массив
-  arr.splice(car - 1, 1); // добавляет/убирает элемент в массиве
-  const str = arr.join(''); // делает строку из массива
-  textArea.value = str; // приваивает новую строку в текстовое поле
-  textArea.setSelectionRange(car - 1, car - 1); // устанавливает каретку на новую позицию
+  if (car > 0) {
+    const arr = textArea.value.split(''); // получает строку из текстового поля, преобразует массив
+    arr.splice(car - 1, 1); // добавляет/убирает элемент в массиве
+    const str = arr.join(''); // делает строку из массива
+    textArea.value = str; // приваивает новую строку в текстовое поле
+    textArea.setSelectionRange(car - 1, car - 1); // устанавливает каретку на новую позицию
+  }
 }
 
 function clickDelete() {
@@ -821,6 +829,45 @@ function changeLang() { // измение языка ( ctrl + alt )
     upperCase();
   }
 }
+
+function clickArrowLeft() {
+  car = getCaret(textArea);
+  if (car > 0) {
+    textArea.setSelectionRange(car - 1, car - 1);
+  }
+}
+
+function clickArrowRight() {
+  car = getCaret(textArea);
+  if (car < textArea.value.length) {
+    textArea.setSelectionRange(car + 1, car + 1);
+  }
+}
+
+function clickArrowUp() {
+  car = getCaret(textArea); // положение каретки в текстовом поле
+  if (car > 0) {
+    const savePos = getPosInRow(textArea); // положение каретки в строке
+    let curPos = getPosInRow(textArea);
+    do {
+      textArea.setSelectionRange(car - 1, car - 1);
+      curPos = getPosInRow(textArea);
+      car = getCaret(textArea);
+    } while (curPos !== savePos && car > 0);
+  }
+}
+
+function clickArrowDown() {
+  car = getCaret(textArea);
+  const savePos = getPosInRow(textArea);
+  let curPos = getPosInRow(textArea);
+  do {
+    textArea.setSelectionRange(car + 1, car + 1);
+    curPos = getPosInRow(textArea);
+    car = getCaret(textArea);
+  } while (curPos !== savePos && car < textArea.value.length);
+}
+
 //-------------------------------------------------------------------------------------
 
 // функции клавиатуры -----------------------------------------------------------------
@@ -856,6 +903,10 @@ function mousedownBTN(e) { // нажал ЛКМ
     if (e.target.classList.contains('Enter')) clickEnter();
     if (e.target.classList.contains('ShiftRight') || e.target.classList.contains('ShiftLeft')) clickShift();
     if (e.target.classList.contains('CapsLock')) clickCapsLock();
+    if (e.target.classList.contains('ArrowLeft')) clickArrowLeft();
+    if (e.target.classList.contains('ArrowRight')) clickArrowRight();
+    if (e.target.classList.contains('ArrowUp')) clickArrowUp();
+    if (e.target.classList.contains('ArrowDown')) clickArrowDown();
   }
 }
 
@@ -896,6 +947,10 @@ function keydown(e) { // нажатие клавишы клавиатуры
     if (currentKey.classList.contains('CapsLock')) clickCapsLock();
     if (controlLeft.classList.contains('active') && altLeft.classList.contains('active')) changeLang();
     if (controlRight.classList.contains('active') && altRight.classList.contains('active')) changeLang();
+    if (currentKey.classList.contains('ArrowLeft')) clickArrowLeft();
+    if (currentKey.classList.contains('ArrowRight')) clickArrowRight();
+    if (currentKey.classList.contains('ArrowUp')) clickArrowUp();
+    if (currentKey.classList.contains('ArrowDown')) clickArrowDown();
   }
 }
 
